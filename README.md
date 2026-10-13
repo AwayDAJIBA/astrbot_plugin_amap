@@ -34,7 +34,7 @@ astrbot_plugin_amap/
 │   ├── locator.py           按需定位：下发请求 → 等手机回传
 │   └── server.py            局域网 HTTP 服务（手机 App 的对接面）
 ├── android/                 手机端 App（Kotlin，独立工程，附自己的 README）
-│   └── app/build/outputs/apk/debug/app-debug.apk   已构建好的安装包
+│                            编译好的 APK 在 GitHub Releases 页面下载
 └── tests/
     ├── selftest.py          离线全链路自测（128 项，不需要联网、不需要 key）
     └── probe_real_amap.py   用假 key 打一次真高德，验证错误链路
@@ -47,7 +47,7 @@ astrbot_plugin_amap/
 1. 确认整个 `astrbot_plugin_amap` 目录在 `AstrBot/data/plugins/` 下，**重启 AstrBot**（新插件必须重启才会被扫描到）。
 2. 启动日志里会看到：`amap: HTTP 服务已启动 http://0.0.0.0:6310（手机请用主机内网 IP 访问）`。
 3. 到 WebUI → 插件 → `astrbot_plugin_amap` 配置里填 `amap_key`，然后重载插件。
-4. 手机装 `android/app/build/outputs/apk/debug/app-debug.apk`，填主机内网 IP（Windows 上 `ipconfig` 看 WiFi 网卡的 IPv4），点「测试连接」「启动服务」。
+4. 手机装上 `AmapLink`（到 [Releases](https://github.com/AwayDAJIBA/astrbot_plugin_amap/releases) 下载 APK，或自己编译），填主机地址，点「测试连接」「启动服务」。
 5. 在聊天里对它说「我现在在哪？」——它会调 `where_is_phone` 走完整条链路。
 
 ---
@@ -108,7 +108,7 @@ astrbot_plugin_amap/
 
 ## 六、手机 App
 
-源码在 `android/`，构建好的安装包在 `android/app/build/outputs/apk/debug/app-debug.apk`（约 5.9 MB，debug 签名，`adb install -r` 可装）。
+源码在 `android/`。不想自己编译就直接去 [Releases](https://github.com/AwayDAJIBA/astrbot_plugin_amap/releases) 下载 `AmapLink-v1.0.0.apk`（约 5.9 MB，debug 签名，`adb install -r` 可装）。
 
 App 里要填三样：**主机内网 IP、端口（默认 6310）、可选令牌**（跟插件配置里的 `auth_token` 一致）。
 然后点「启动服务」，会挂一个常驻通知——这是前台服务，用来防止系统把轮询杀掉。
