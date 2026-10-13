@@ -28,7 +28,7 @@
 - **新鲜度控制**：默认 15 秒内的位置缓存直接复用，不重复骚扰手机；
   设备离线时立刻返回原因而不是干等超时。
 
-### 手机端 App（Dejiko定位）
+### 手机端 App（AmapLink）
 
 - Kotlin + Gradle，只用系统 `LocationManager`，**不依赖任何第三方地图或定位 SDK**，
   因此不需要高德 Android key，也不用配 SHA1 指纹。

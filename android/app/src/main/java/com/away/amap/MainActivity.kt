@@ -263,7 +263,7 @@ class MainActivity : AppCompatActivity(), LocateBus.Listener {
             return
         }
         if (!hasLocationPermission()) {
-            LocateBus.log("定位权限被拒绝：请到「设置 → 应用 → Dejiko定位 → 权限」里手动开启位置权限")
+            LocateBus.log("定位权限被拒绝：请到「设置 → 应用 → AmapLink → 权限」里手动开启位置权限")
         }
         val action = pendingAction
         pendingAction = null

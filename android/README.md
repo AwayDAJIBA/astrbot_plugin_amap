@@ -1,11 +1,11 @@
-# Dejiko定位（astrbot_plugin_amap 配套 Android App）
+# AmapLink（astrbot_plugin_amap 配套 Android App）
 
 配合 AstrBot 插件 **astrbot_plugin_amap** 使用的手机端定位 App：前台服务常驻，
 定时向主机 `GET /amap/poll` 询问「有没有人要定位」，有请求就用**系统 `LocationManager`** 取一次点，
 再 `POST /amap/report` 回传。
 
 - 包名 / applicationId：`com.away.amap`
-- 显示名：`Dejiko定位`
+- 显示名：`AmapLink`
 - **不依赖任何第三方定位或地图 SDK**（没有高德/百度/Google SDK，也不需要任何 Android Key），
   只有一个额外依赖 OkHttp 用来发 HTTP。
 - minSdk 24（Android 7.0）/ targetSdk 34 / compileSdk 34，Kotlin 1.9.22，AGP 8.2.2。
@@ -157,7 +157,7 @@ gradlew.bat assembleDebug --offline
    - **设备名 / device_id**：默认自动填（device_id 首次运行按机型自动生成），可以手改
    - **轮询秒**：默认 15（最小 3）
 4. 点「保存配置」→「测试连接」，看到 `连接成功：astrbot_plugin_amap v1.0.0 …` 就通了。
-5. 点「启动服务」。状态灯变绿、通知栏出现「Dejiko定位运行中」即成功。
+5. 点「启动服务」。状态灯变绿、通知栏出现「AmapLink运行中」即成功。
 6. 需要马上要一次位置，点「立即上报」；想看服务端记了什么，可以用
    `GET /amap/last?device_id=<你的id>`。
 
@@ -234,7 +234,7 @@ gradlew.bat assembleDebug --offline
 **Q1：服务在后台被系统杀了 / 过一会儿就不上报了。**
 前台服务只是「降低」被杀概率，国产 ROM（小米/华为/OPPO/vivo/荣耀等）还要手动放行：
 
-- 设置 → 应用 → Dejiko定位 → **省电策略改成「无限制」/「允许后台运行」**
+- 设置 → 应用 → AmapLink → **省电策略改成「无限制」/「允许后台运行」**
 - 打开**自启动 / 关联启动**（部分 ROM 叫「允许后台弹出界面」「后台活动」）
 - 最近任务列表里给 App **加锁**（下拉或长按卡片上锁），别一键清理
 - 开发者选项里如果有「不保留活动」「后台进程限制」，别开
@@ -242,12 +242,12 @@ gradlew.bat assembleDebug --offline
 
 **Q2：点了「启动服务」，App 提示没有定位权限 / 服务起不来。**
 Android 14（API 34）起，`foregroundServiceType="location"` 的前台服务**必须先有定位权限**才能启动。
-去 设置 → 应用 → Dejiko定位 → 权限 → 位置信息，选「使用应用期间允许」或「始终允许」。
+去 设置 → 应用 → AmapLink → 权限 → 位置信息，选「使用应用期间允许」或「始终允许」。
 App 在启动服务前也会先弹权限申请，拒绝的话会明确写日志并取消启动（不会闪退）。
 
-**Q3：Android 13+ 通知栏不显示「Dejiko定位运行中」。**
+**Q3：Android 13+ 通知栏不显示「AmapLink运行中」。**
 Android 13 起通知是**动态权限**。App 会在启动服务时申请一次；如果之前点过「拒绝」，
-去 设置 → 应用 → Dejiko定位 → 通知，手动打开。通知被关了服务仍会跑，只是看不到常驻通知。
+去 设置 → 应用 → AmapLink → 通知，手动打开。通知被关了服务仍会跑，只是看不到常驻通知。
 
 **Q4：一直拿不到点（日志里是「定位失败」）。**
 - 室内 GPS 没信号是正常的，去窗边或室外；第一次定位（冷启动）也可能要 30s 以上

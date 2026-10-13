@@ -162,7 +162,7 @@ class LocateService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val channel = NotificationChannel(CHANNEL_ID, "定位通道", NotificationManager.IMPORTANCE_LOW)
-            channel.description = "Dejiko定位 后台轮询定位请求"
+            channel.description = "AmapLink 后台轮询定位请求"
             manager.createNotificationChannel(channel)
         }
     }
@@ -184,7 +184,7 @@ class LocateService : Service() {
             Notification.Builder(this)
         }
         return builder
-            .setContentTitle("Dejiko定位运行中")
+            .setContentTitle("AmapLink运行中")
             .setContentText(text)
             .setSmallIcon(R.drawable.ic_stat_locate)
             .setContentIntent(pendingIntent())

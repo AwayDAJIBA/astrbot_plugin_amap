@@ -38,7 +38,7 @@ object LocateHelper {
      */
     fun acquire(context: Context, timeoutMs: Int, maxAgeMs: Int, highAccuracy: Boolean = true): Fix {
         if (!hasPermission(context)) {
-            return Fix(false, null, "unknown", "缺少定位权限（请在系统设置里给「Dejiko定位」开启位置权限）")
+            return Fix(false, null, "unknown", "缺少定位权限（请在系统设置里给「AmapLink」开启位置权限）")
         }
         val manager = context.getSystemService(Context.LOCATION_SERVICE) as? LocationManager
             ?: return Fix(false, null, "unknown", "设备不支持定位服务")

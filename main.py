@@ -288,7 +288,7 @@ class AmapPlugin(Star):
         if not rows:
             return (
                 "目前没有任何手机连过主机。"
-                "请确认手机 App（Dejiko定位）已启动、主机地址端口填的是 "
+                "请确认手机 App（AmapLink）已启动、主机地址端口填的是 "
                 + str(self.cfg.listen_host) + ":" + str(self.cfg.listen_port)
                 + "，并且和主机在同一个 WiFi 下。"
             )
