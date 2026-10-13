@@ -1,0 +1,50 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# 插件运行时数据：位置历史、地图缓存、日志。里面有隐私，绝对不要入库。
+data/
+static_maps/
+*.log
+
+# 开发过程中产生的备份
+*.bak
+*.bak.*
+*.orig
+*.tmp
+
+# ---- Android ----
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/captures/
+android/.cxx/
+android/*.iml
+local.properties
+
+# 打包产物：仓库里不放二进制，要发就发 Release
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# 签名文件：泄露等于把 app 的命根子交出去
+*.keystore
+*.jks
+keystore.properties
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

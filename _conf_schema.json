@@ -1,0 +1,158 @@
+{
+  "enabled": {
+    "type": "bool",
+    "label": "启用手机定位通道",
+    "description": "打开后插件会在下面地址/端口起一个局域网 HTTP 服务，手机 App 靠它取定位请求、回传坐标。关闭后所有高德地图工具照常可用，只是没法查手机位置。",
+    "default": true
+  },
+  "listen_host": {
+    "type": "string",
+    "label": "监听地址",
+    "description": "0.0.0.0 = 所有网卡（推荐，手机用主机内网 IP 访问）；也可写死内网 IP。",
+    "default": "0.0.0.0"
+  },
+  "listen_port": {
+    "type": "int",
+    "label": "监听端口",
+    "description": "注意避开 AstrBot WebUI（6185/6186/6199）和 phone_link 的 6300。",
+    "default": 6310
+  },
+  "auth_token": {
+    "type": "string",
+    "label": "可选令牌",
+    "description": "留空 = 不鉴权（局域网直连的最简做法）。填了则手机请求需带 Header X-Amap-Token 或 ?token= 同名值，App 里也要填一样的。",
+    "default": ""
+  },
+  "amap_key": {
+    "type": "string",
+    "label": "高德 Web 服务 Key",
+    "description": "高德开放平台 → 应用管理 → 创建应用 → 添加 Key，服务平台必须选「Web服务」（不是 Web端/Android/iOS）。留空则所有高德接口返回配置提示，手机定位仍可用。",
+    "default": ""
+  },
+  "amap_sig_secret": {
+    "type": "string",
+    "label": "数字签名私钥(可选)",
+    "description": "只有 key 在控制台开了「数字签名」才需要填。填了之后每个请求都会自动带 sig 参数。",
+    "default": ""
+  },
+  "api_base": {
+    "type": "string",
+    "label": "高德 API 基址",
+    "description": "默认官方 https://restapi.amap.com；一般不用改（改这个主要是为了走代理或做本地假服务测试）。",
+    "default": "https://restapi.amap.com"
+  },
+  "request_timeout": {
+    "type": "int",
+    "label": "单次请求超时(秒)",
+    "description": "调用高德接口的超时时间。",
+    "default": 10
+  },
+  "retry_times": {
+    "type": "int",
+    "label": "失败重试次数",
+    "description": "仅对网络/超时类错误重试；key 错误、参数错误不会重试。",
+    "default": 1
+  },
+  "cache_ttl": {
+    "type": "int",
+    "label": "查询结果缓存时长(秒)",
+    "description": "同一个查询在这个时间内直接返回缓存，不再消耗高德配额。高德配额按月计算，而且搜索类（POI/输入提示）和天气各只有 5000 次/月，agent 反复问同一件事时这层缓存很关键。0=关闭缓存。",
+    "default": 120
+  },
+  "auto_convert": {
+    "type": "bool",
+    "label": "自动做坐标转换",
+    "description": "手机上报的是 WGS-84（GPS 原始），高德要 GCJ-02。开启后插件自动转换，关掉则按原样使用（会有几百米偏移）。",
+    "default": true
+  },
+  "convert_host": {
+    "type": "string",
+    "label": "坐标转换方式",
+    "description": "local = 本地算法（零延迟、不耗配额，推荐）；api = 调用高德官方转换接口。",
+    "default": "local"
+  },
+  "locate_timeout": {
+    "type": "int",
+    "label": "定位等待时长(秒)",
+    "description": "向手机下发定位请求后最多等多久。手机取 GPS 通常几秒内完成，分钟级说明手机侧有问题。",
+    "default": 45
+  },
+  "locate_max_age": {
+    "type": "int",
+    "label": "位置缓存可用时长(秒)",
+    "description": "最近一次位置在这个时间内就直接用，不再打扰手机。设 0 = 每次都要手机现场重新取。",
+    "default": 15
+  },
+  "high_accuracy": {
+    "type": "bool",
+    "label": "要求高精度定位",
+    "description": "会把 high_accuracy 标成 true，手机端优先用 GPS 而不是基站/WiFi 定位。",
+    "default": true
+  },
+  "default_device": {
+    "type": "string",
+    "label": "默认设备 ID",
+    "description": "agent 不指定设备时用这台。留空则由插件自动判断：只有一台设备时自动用它。",
+    "default": ""
+  },
+  "locate_fallback_city": {
+    "type": "string",
+    "label": "备用城市(查天气用)",
+    "description": "解析不出 adcode 时，查当地天气退而使用这个城市名。可留空。",
+    "default": ""
+  },
+  "poll_interval": {
+    "type": "int",
+    "label": "建议轮询间隔(秒)",
+    "description": "只作为 /amap/ping、/amap/poll 的返回值告诉手机 App 的建议值，App 里还能自己调。",
+    "default": 15
+  },
+  "device_offline_sec": {
+    "type": "int",
+    "label": "设备离线阈值(秒)",
+    "description": "超过这么久没轮询就认为手机不在线；此时 locate_phone 会立刻返回提示而不是白等。",
+    "default": 90
+  },
+  "history_limit": {
+    "type": "int",
+    "label": "位置历史保留条数",
+    "description": "每台手机最多保留多少条位置记录（落盘）。0 = 不记历史。",
+    "default": 200
+  },
+  "persist": {
+    "type": "bool",
+    "label": "状态落盘",
+    "description": "把设备表和位置记录写到插件数据目录的 state.json，AstrBot 重启后不丢。",
+    "default": true
+  },
+  "max_text_chars": {
+    "type": "int",
+    "label": "返回文本最大长度",
+    "description": "给 agent 的工具结果截断长度（字符）。",
+    "default": 6000
+  },
+  "poi_page_size": {
+    "type": "int",
+    "label": "POI 每次返回条数",
+    "description": "搜索地点时一次返回多少条（1-25），太多会挤占上下文。",
+    "default": 8
+  },
+  "static_map_zoom": {
+    "type": "int",
+    "label": "静态地图默认缩放",
+    "description": "1~17，越大越细。",
+    "default": 14
+  },
+  "static_map_size": {
+    "type": "string",
+    "label": "静态地图尺寸",
+    "description": "格式「宽*高」，如 750*500。",
+    "default": "750*500"
+  },
+  "static_map_dir": {
+    "type": "string",
+    "label": "静态地图保存目录",
+    "description": "留空 = 插件数据目录下的 static_maps/。",
+    "default": ""
+  }
+}

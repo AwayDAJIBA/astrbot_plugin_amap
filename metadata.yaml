@@ -1,0 +1,14 @@
+name: astrbot_plugin_amap
+display_name: 高德地图 & 手机定位 (amap)
+short_desc: 把高德地图接进 AstrBot，并按需拉取手机定位
+desc: '把高德地图开放平台接进 AstrBot，并配一个手机端 App：agent 想查位置时才向手机下发一次定位请求（不常驻、不耗电），手机取 GPS 回传后插件自动做坐标转换与逆地理编码，返回可读的中文地址。提供 14 个 agent 工具：查手机在哪、当地天气、地址转坐标、坐标转地址、POI 搜索、路径规划、距离测量、IP 定位、行政区划查询、静态地图。局域网或组网（Tailscale / 蒲公英等）直连，不依赖公网。'
+version: v1.0.0
+author: Away
+repo: https://github.com/AwayDAJIBA/astrbot_plugin_amap
+astrbot_version: ">=4.16"
+tags:
+  - 地图
+  - 定位
+  - 高德
+  - 天气
+  - 工具

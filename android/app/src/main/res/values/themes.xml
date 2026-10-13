@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 风格 + DayNight：深色主题自动跟随系统（颜色在 values-night 覆盖） -->
+    <style name="Theme.AmapLink" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/am_primary</item>
+        <item name="colorPrimaryVariant">@color/am_primary_dim</item>
+        <item name="colorOnPrimary">#FFFFFFFF</item>
+        <item name="colorSecondary">@color/am_primary</item>
+        <item name="colorSurface">@color/am_surface</item>
+        <item name="colorOnSurface">@color/am_text</item>
+        <item name="android:windowBackground">@color/am_bg</item>
+        <item name="android:textColorPrimary">@color/am_text</item>
+        <item name="android:textColorSecondary">@color/am_text_dim</item>
+    </style>
+
+    <style name="AmMeta">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/am_text_dim</item>
+    </style>
+</resources>

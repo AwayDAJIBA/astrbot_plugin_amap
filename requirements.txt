@@ -1,0 +1,6 @@
+# astrbot_plugin_amap 运行时依赖
+#
+# AstrBot 本体已经带了 aiohttp（插件 HTTP 服务与高德请求全靠它），
+# 所以这里通常不需要额外安装任何东西。
+# 如果 AstrBot 环境里确实缺，用下面这行补：
+aiohttp>=3.9.0

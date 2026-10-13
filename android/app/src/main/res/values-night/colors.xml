@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 深色主题：同名覆盖 -->
+<resources>
+    <color name="am_bg">#FF101216</color>
+    <color name="am_surface">#FF181B21</color>
+    <color name="am_surface_alt">#FF22262F</color>
+    <color name="am_text">#FFE8EAF0</color>
+    <color name="am_text_dim">#FF9AA3B2</color>
+    <color name="am_primary">#FF6E8CFF</color>
+    <color name="am_primary_dim">#FF4F6BE0</color>
+    <color name="am_ok">#FF4ADE80</color>
+    <color name="am_bad">#FFF87171</color>
+    <color name="am_warn">#FFFBBF24</color>
+    <color name="am_divider">#33FFFFFF</color>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 浅色主题调色板；深色在 values-night/colors.xml 里覆盖同名颜色 -->
+<resources>
+    <color name="am_bg">#FFF4F6FA</color>
+    <color name="am_surface">#FFFFFFFF</color>
+    <color name="am_surface_alt">#FFEAEEF6</color>
+    <color name="am_text">#FF16181D</color>
+    <color name="am_text_dim">#FF69707F</color>
+    <color name="am_primary">#FF3D6BFF</color>
+    <color name="am_primary_dim">#FF2B4FD8</color>
+    <color name="am_ok">#FF16A34A</color>
+    <color name="am_bad">#FFDC2626</color>
+    <color name="am_warn">#FFD97706</color>
+    <color name="am_divider">#1F000000</color>
+</resources>

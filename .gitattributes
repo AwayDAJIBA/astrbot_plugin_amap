@@ -1,0 +1,12 @@
+# 统一换行符：源码一律 LF，Windows 专用脚本保持 CRLF
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# 二进制文件不做换行转换
+*.jar binary
+*.png binary
+*.jpg binary
+*.apk binary
+*.keystore binary

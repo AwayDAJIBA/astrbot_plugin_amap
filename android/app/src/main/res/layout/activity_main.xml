@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 主界面：状态卡 + 配置卡 + 按钮 + 日志（日志区占满剩余高度） -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/am_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/am_screen_padding">
+
+    <!-- 状态卡 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <View
+            android:id="@+id/viewDot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_status_dot" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textDeviceLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="device_id"
+                android:textColor="@color/am_text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textService"
+                style="@style/AmMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="服务未启动" />
+
+            <TextView
+                android:id="@+id/textLastReport"
+                style="@style/AmMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="还没有上报过" />
+
+            <TextView
+                android:id="@+id/textServer"
+                style="@style/AmMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="无" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 配置卡 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editHost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/bg_field"
+                android:hint="主机地址（局域网 IP）"
+                android:inputType="textUri"
+                android:padding="8dp"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editPort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_field"
+                android:hint="端口"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editToken"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/bg_field"
+                android:hint="令牌（可空）"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editPoll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_field"
+                android:hint="轮询秒"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editDeviceName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_field"
+                android:hint="设备名"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/editDeviceId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_field"
+                android:hint="device_id"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="保存配置"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnPing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="测试连接"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnReportNow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="立即上报"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="启动服务"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="停止服务"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnClearLog"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="清空日志"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 日志卡：占满剩余空间 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/AmMeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="运行日志" />
+
+        <ScrollView
+            android:id="@+id/scrollLog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/textLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textColor="@color/am_text_dim"
+                android:textSize="11sp" />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>
